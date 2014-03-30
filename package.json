@@ -1,0 +1,28 @@
+{
+    "private":true,
+    "dependencies": {
+        "path":"*",
+        "qs":"*",
+        "util":"*",
+        "mongodb":"*",
+        "async":"*",
+        "request":"*",
+        "cron":"*",
+        "underscore":"*",
+        "vow": "*",
+        "iconv-lite": "*"
+    },
+    "devDependencies": {
+        "nodeunit": "*"
+    },
+    "author": "Alexey Belousov",
+    "name": "node-crawler",
+    "version": "0.1.0",
+    "repository": {
+        "url": "https://github.com/i4got10/node-crawler.git"
+    },
+    "main": "./lib/crawler",
+    "engines": {
+        "node": "*"
+    }
+}
