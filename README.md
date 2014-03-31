@@ -1,4 +1,4 @@
-Redmine-analyzer(Ra)
+Node Crawler
 ====================
 
 Project uses [https://github.com/caolan/nodeunit](nodeunit) testing. You can install it and run tests
