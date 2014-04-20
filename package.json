@@ -1,16 +1,18 @@
 {
     "author": "Alexey Belousov",
-    "name": "node-crawler",
+    "name": "grabby",
+    "description": "Simple node crawler",
+    "keywords": "crawler, http, grabber",
     "version": "0.1.0",
     "repository": {
-        "url": "https://github.com/i4got10/node-crawler.git"
+        "url": "https://github.com/i4got10/grabby.git"
     },
     "dependencies": {
-        "path":"*",
-        "qs":"*",
-        "util":"*",
-        "request":"*",
-        "underscore":"*",
+        "path": "*",
+        "qs": "*",
+        "util": "*",
+        "request": "*",
+        "underscore": "*",
         "vow": "*",
         "iconv-lite": "*",
         "zlib": "*"
