@@ -5,7 +5,6 @@ var zlib = require('zlib'),
  * @returns {vow.Deferred}
  */
 module.exports = function decompress (buffer, compressType) {
-    console.log('_decompress %s', compressType);
     var self = this,
         d = vow.defer();
 
