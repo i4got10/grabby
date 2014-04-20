@@ -12,10 +12,12 @@
         "request":"*",
         "underscore":"*",
         "vow": "*",
-        "iconv-lite": "*"
+        "iconv-lite": "*",
+        "zlib": "*"
     },
     "devDependencies": {
-        "nodeunit": "*"
+        "nodeunit": "*",
+        "nock": "*"
     },
     "main": "./lib/crawler",
     "engines": {

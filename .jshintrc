@@ -1,0 +1,21 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "sub": true,
+    "undef": true,
+    "boss": true,
+    "eqnull": true,
+    "node": true,
+    "es5": false,
+    "strict": false,
+    "indent": 4,
+    "maxerr": 5,
+    "maxdepth": 2,
+    "maxstatements": 13,
+    "maxcomplexity": 5,
+    "debug": true
+}
