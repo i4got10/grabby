@@ -19,7 +19,7 @@
         "nodeunit": "*",
         "nock": "*"
     },
-    "main": "./lib/crawler",
+    "main": "lib/crawler",
     "engines": {
         "node": "*"
     }

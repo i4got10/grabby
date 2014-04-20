@@ -4,12 +4,20 @@ var crawler = require('../lib/crawler'),
 
 // nodeunit tests/crawler.js
 module.exports.group1 = {
-    'crawler grab ya.ru': function(test) {
-        mocks.mock('ya.ru');
+    'crawler can grab ya.ru': function(test) {
+        mocks.enableHttpMocks();
 
-        var request = {url: 'http://ya.ru'};
+        var request = {url: 'http://ya.ru/unzipped', headers: {'Accept-Encoding': ''}};
         crawler.grab(request).then(function (html) {
-            console.log(html);
+            test.done();
+        }).done();
+    },
+
+    'crawler grab gzipped ya.ru': function(test) {
+        mocks.enableHttpMocks();
+
+        var request = {url: 'http://ya.ru/zipped', headers: {'Accept-Encoding': 'gzip'}};
+        crawler.grab(request).then(function (html) {
             test.done();
         }).done();
     }
