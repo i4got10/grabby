@@ -1,7 +1,7 @@
 var nock = require('nock'),
     fs = require('fs'),
-    util = require('util'),
-    _ = require('underscore');
+    sprintf = require('util').format,
+    _ = require('lodash');
 
 module.exports = {
     /**
