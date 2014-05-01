@@ -1,6 +1,5 @@
 var util = require('util'),
-    iconv = require('iconv-lite'),
-    _ = require('underscore');
+    iconv = require('iconv-lite');
 
 /**
  * @param {String} encoding

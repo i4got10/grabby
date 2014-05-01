@@ -12,7 +12,7 @@
         "qs": "*",
         "util": "*",
         "request": "*",
-        "underscore": "*",
+        "lodash": "*",
         "vow": "*",
         "iconv-lite": "*",
         "zlib": "*"
