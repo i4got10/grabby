@@ -1,4 +1,4 @@
-Node Crawler
+Grabby
 ====================
 
 Simple tool for http requesting. Support encoding(gzip, deflate) and language decoding(utf8, win1251).
@@ -16,9 +16,9 @@ Example
     };
 
     require('grabby').grab(request).then(function (html) {
-            // for example parse http with cheerio
-            var $ = cheerio.load(html);
-        });
+        // for example parse http with cheerio
+        var $ = cheerio.load(html);
+    });
 ```
 
 tests
