@@ -2,18 +2,17 @@ var zlib = require('zlib'),
     vow = require('vow');
 
 /**
- * @returns {vow.Deferred}
+ * @returns {vow.Promise}
  */
 module.exports = function decompress (buffer, compressType) {
-    var self = this,
-        d = vow.defer();
+    var d = new vow.Promise();
 
     if (compressType === 'gzip') {
         zlib.gunzip(buffer, function (err, decompressed) {
             if (err) {
                 d.reject(err);
             } else {
-                d.resolve(decompressed);
+                d.fulfill(decompressed);
             }
         });
     }
@@ -22,13 +21,13 @@ module.exports = function decompress (buffer, compressType) {
             if (err) {
                 d.reject(err);
             } else {
-                d.resolve(decompressed);
+                d.fulfill(decompressed);
             }
         });
     }
     else {
-        d.resolve(buffer);
+        d.fulfill(buffer);
     }
 
-    return d.promise();
+    return d;
 };

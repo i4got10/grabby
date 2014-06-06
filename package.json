@@ -1,28 +1,28 @@
 {
-    "author": "Alexey Belousov",
-    "name": "grabby",
-    "description": "Simple node crawler",
-    "keywords": "crawler, http, grabber",
-    "version": "0.1.0",
-    "repository": {
-        "url": "https://github.com/i4got10/grabby.git"
-    },
-    "dependencies": {
-        "path": "*",
-        "qs": "*",
-        "util": "*",
-        "request": "*",
-        "lodash": "*",
-        "vow": "*",
-        "iconv-lite": "*",
-        "zlib": "*"
-    },
-    "devDependencies": {
-        "nodeunit": "*",
-        "nock": "*"
-    },
-    "main": "lib/crawler",
-    "engines": {
-        "node": "*"
-    }
+  "author": "Alexey Belousov",
+  "name": "grabby",
+  "description": "Simple node crawler",
+  "keywords": "crawler, http, grabber",
+  "version": "0.1.1",
+  "repository": {
+    "url": "https://github.com/i4got10/grabby.git"
+  },
+  "dependencies": {
+    "qs": "~0.6.6",
+    "request": "~2.36.0",
+    "lodash": "~2.4.1",
+    "vow": "~0.3.13",
+    "iconv-lite": "~0.2.11"
+  },
+  "devDependencies": {
+    "nock": "~0.34.0",
+    "mocha": "~1.20.1"
+  },
+  "main": "lib/crawler",
+  "engines": {
+    "node": "~0.10"
+  },
+  "scripts": {
+    "test": "mocha tests/*.js -R spec -t 100000"
+  }
 }
