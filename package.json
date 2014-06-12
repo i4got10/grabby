@@ -3,7 +3,7 @@
   "name": "grabby",
   "description": "Simple node crawler",
   "keywords": "crawler, http, grabber",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "url": "https://github.com/i4got10/grabby.git"
   },

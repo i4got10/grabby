@@ -15,7 +15,7 @@ Example
         }
     };
 
-    require('grabby').grab(request).then(function (html) {
+    require('grabby').requestHtml(request).then(function (html) {
         // for example parse http with cheerio
         var $ = cheerio.load(html);
     });
@@ -24,10 +24,8 @@ Example
 tests
 -----
 
-Project uses [https://github.com/caolan/nodeunit](nodeunit) for testing. You can install it and run tests
 ```bash
-    npm install -g nodeunit
-    nodeunit tests/crawler.js
+    npm test
 ```
 
 
