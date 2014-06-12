@@ -7,6 +7,8 @@ Example
 -------
 
 ```javascript
+    var grabby = require('grabby');
+
     // http://yandex.ru/yandsearch?text=food
     var request = {
         url: 'http://yandex.ru/yandsearch',
@@ -15,10 +17,29 @@ Example
         }
     };
 
-    require('grabby').requestHtml(request).then(function (html) {
+    // returns vow promise
+    grabby.requestHtml(request).then(function (html) {
         // for example parse http with cheerio
         var $ = cheerio.load(html);
     });
+
+    // set fail reason and grabby will continue to try
+    // useful if you meet nginx with request per minute limit
+    grabby.requestHtml({
+        url: '',
+        attempt: {
+            reason: [409], // status code
+            reason: function (response) { // or your own reason
+                /* check response */
+            },
+            timeout: 100, // constant in ms
+            timeout: function (nTry) { // or even your custom value
+                return 100 * nTry;
+            },
+            limit: 10 // reject promise after 10 tries
+        }
+    });
+
 ```
 
 tests
