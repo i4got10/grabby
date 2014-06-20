@@ -14,7 +14,7 @@
     "strict": false,
     "indent": 4,
     "maxerr": 5,
-    "maxdepth": 2,
+    "maxdepth": 3,
     "maxstatements": 13,
     "maxcomplexity": 5,
     "debug": true

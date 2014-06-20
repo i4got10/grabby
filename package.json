@@ -11,8 +11,9 @@
     "qs": "~0.6.6",
     "request": "~2.36.0",
     "lodash": "~2.4.1",
-    "vow": "~0.3.13",
-    "iconv-lite": "~0.2.11"
+    "vow": "~0.4.4",
+    "iconv-lite": "~0.2.11",
+    "should": "~4.0.4"
   },
   "devDependencies": {
     "nock": "~0.34.1",

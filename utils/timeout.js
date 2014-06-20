@@ -6,9 +6,11 @@ var vow = require('vow');
  * @returns {vow.Promise}
  */
 module.exports = function (time) {
-    var dfd = new vow.Promise();
+    var d = vow.defer();
 
-    setTimeout(dfd.fulfill, time);
+    setTimeout(function () {
+        d.resolve();
+    }, time);
 
-    return dfd;
+    return d.promise();
 };

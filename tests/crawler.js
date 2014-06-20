@@ -3,7 +3,8 @@
 var grabby = require('../lib/crawler'),
     fs = require('fs'),
     nock = require('nock'),
-    assert = require("assert");
+    assert = require("assert"),
+    should = require('should');
 
 describe('grabby', function() {
     describe('#requestHtml', function () {
@@ -16,9 +17,9 @@ describe('grabby', function() {
 
             var request = {url: 'http://ya.ru/'};
 
-            grabby.requestHtml(request).then(function (html) {
+            return grabby.requestHtml(request).then(function (html) {
                 assert.equal(true, (/<title>Яндекс<\/title>/gi).test(html));
-            }).done();
+            });
         });
 
         it('can request html pages encoded with gzip', function() {
@@ -30,13 +31,13 @@ describe('grabby', function() {
 
             var request = {url: 'http://ya.ru/', headers: {'Accept-Encoding': 'gzip'}};
 
-            grabby.requestHtml(request).then(function (html) {
+            return grabby.requestHtml(request).then(function (html) {
                 assert.equal(true, (/<title>Яндекс<\/title>/gi).test(html));
-            }).done();
+            });
         });
 
-        it('can make some attempt if meet 409', function () {
-            nock('http://ya.ru')
+        it('can make few attempts if meet 409', function () {
+            var requestScope = nock('http://ya.ru')
                 .get('/')
                 .times(1)
                 .reply(409, 'too often')
@@ -55,35 +56,16 @@ describe('grabby', function() {
                 url: 'http://ya.ru/',
                 attempt: {
                     reason: 409,
-                    timeout: 0,
+                    delay: 0,
                     limit: 10
                 }
             };
 
-            grabby.requestHtml(request).then(function (html) {
-                assert.equal(true, (/<title>Яндекс<\/title>/gi).test(html));
-            }).done();
+            return grabby.requestHtml(request).then(function (html) {
+                should.equal(true, (/<title>Яндекс<\/title>/gi).test(html));
+            }, function (f) {
+                assert.fail(f);
+            });
         });
     });
 });
-/*
-
-https://github.com/pgte/nock/issues/new
-
-Hi!
-
-    Is it possible to answer the same query with different results depending on conditions?
-
-    For example, I want three times to answer 409 error, and then give the data with 200 code. Reason is to test if the server can only process n request per minute, and I want to make several attempts with timeout. So, I want to simulate request per time limit
-
-```javascript
-nock('http://example.com')
-    .get('/')
-    .times(3)
-    .reply(409, 'too often')
-
-    .get('/')
-    .times(1)
-    .reply(200, {result: 'success'});
-```
-*/

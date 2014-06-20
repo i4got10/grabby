@@ -29,11 +29,11 @@ Example
         url: '',
         attempt: {
             reason: [409], // status code
-            reason: function (response) { // or your own reason
+            reason: function (error, response) { // or your own reason
                 /* check response */
             },
-            timeout: 100, // constant in ms
-            timeout: function (nTry) { // or even your custom value
+            delay: 100, // constant in ms
+            delay: function (nTry) { // or even your custom value
                 return 100 * nTry;
             },
             limit: 10 // reject promise after 10 tries
