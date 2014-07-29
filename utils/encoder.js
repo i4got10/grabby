@@ -6,11 +6,11 @@ var util = require('util'),
  * @returns {*}
  * @private
  */
-function _extractEncoding(encoding) {
+function _normalizeEncoding(encoding) {
     var e = encoding.toLowerCase();
-    if (['utf-8', 'utf8'].indexOf(encoding)) {
+    if (['utf-8', 'utf8'].indexOf(encoding) !== -1) {
         e = 'utf8';
-    } else if (['win1251', 'windows-1251'].indexOf(encoding)) {
+    } else if (['win1251', 'windows-1251', 'windows1251'].indexOf(encoding) !== -1) {
         e = 'win1251';
     } else {
         throw new Error(util.format('Encoding "%s" is not supported yet', encoding));
@@ -30,13 +30,11 @@ function _extractEncoding(encoding) {
  * @return {String}
  */
 module.exports = function (buffer, encodeFrom, encodeTo) {
-    var from = _extractEncoding(encodeFrom),
-        to = _extractEncoding(encodeTo);
-
-    var buf;
+    var from = _normalizeEncoding(encodeFrom),
+        to = _normalizeEncoding(encodeTo);
 
     // from source encoding to internal
-    buf = iconv.fromEncoding(buffer, from);
+    var buf = iconv.fromEncoding(buffer, from);
 
     // from internal encoding to target
     return iconv.toEncoding(buf, to).toString();
