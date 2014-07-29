@@ -3,8 +3,7 @@
 var grabby = require('../lib/crawler'),
     fs = require('fs'),
     nock = require('nock'),
-    assert = require('assert'),
-    should = require('should');
+    assert = require('assert');
 
 nock.disableNetConnect();
 
@@ -67,9 +66,7 @@ describe('grabby', function() {
             };
 
             return grabby.requestHtml(request).then(function (html) {
-                should.equal(true, (/<title>Яндекс<\/title>/gi).test(html));
-            }, function (f) {
-                assert.fail(f);
+                assert.equal(true, (/<title>Яндекс<\/title>/gi).test(html));
             });
         });
     });
