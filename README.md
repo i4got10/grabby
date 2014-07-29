@@ -1,6 +1,7 @@
 # Grabby
 
 [![NPM](https://nodei.co/npm/grabby.png)](https://nodei.co/npm/grabby/)
+[![Build Status](https://travis-ci.org/i4got10/grabby.svg?branch=master)](https://travis-ci.org/i4got10/grabby)
 
 ## Features
  * [request](https://github.com/mikeal/request) compatibility
