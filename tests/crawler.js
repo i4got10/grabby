@@ -19,7 +19,7 @@ var responses = {
 
 describe('grabby', function() {
     describe('#requestHtml', function () {
-        it('can request simple html pages', function() {
+        it('simple html pages', function() {
             var scope = nock('http://ya.ru')
                 .get('/')
                 .reply(200, responses['ya.ru-plain'], {});
@@ -34,7 +34,7 @@ describe('grabby', function() {
             });
         });
 
-        it('can request html pages encoded with gzip', function() {
+        it('html pages encoded with gzip', function() {
             var scope = nock('http://ya.ru')
                 .get('/')
                 .reply(200, responses['ya.ru-gzip'], {'Content-Encoding': 'gzip'});
@@ -49,7 +49,7 @@ describe('grabby', function() {
             });
         });
 
-        it('can make few attempts if meet 409', function () {
+        it('few attempts if meet 409', function () {
             var scope = nock('http://ya.ru')
                 .get('/')
                 .times(1)
@@ -76,7 +76,7 @@ describe('grabby', function() {
             });
         });
 
-        it('make only 1 attempt if limit set to 1', function () {
+        it('only 1 attempt if limit set to 1', function () {
             var scope = nock('http://ya.ru')
                 .get('/')
                 .times(1)
@@ -102,7 +102,7 @@ describe('grabby', function() {
             );
         });
 
-        it('failed on timeout', function () {
+        it('failed on request timeout', function () {
             var scope = nock('http://ya.ru')
                 .get('/')
                 .delayConnection(2000)
