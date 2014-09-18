@@ -3,7 +3,8 @@
 var grabby = require('../lib/crawler'),
     fs = require('fs'),
     nock = require('nock'),
-    assert = require('assert');
+    assert = require('assert'),
+    vow = require('vow');
 
 nock.disableNetConnect();
 
@@ -68,6 +69,35 @@ describe('grabby', function() {
             return grabby.requestHtml(request).then(function (html) {
                 assert.equal(true, (/<title>Яндекс<\/title>/gi).test(html));
             });
+        });
+
+        it('make only 1 attempt if limit set to 1', function () {
+            nock('http://ya.ru')
+                .get('/')
+                .times(1)
+                .reply(409, 'too often')
+
+                .get('/')
+                .times(1)
+                .reply(200, responses['ya.ru-plain'], {});
+
+            var request = {
+                url: 'http://ya.ru/',
+                attempt: {
+                    reason: 409,
+                    delay: 0,
+                    limit: 1
+                }
+            };
+
+            return grabby.requestHtml(request).then(
+                function () {
+                    throw new Error();
+                },
+                function () {
+                    return 1;
+                }
+            );
         });
     });
 });
