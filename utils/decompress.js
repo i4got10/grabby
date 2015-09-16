@@ -1,33 +1,29 @@
-var zlib = require('zlib'),
-    vow = require('vow');
+var zlib = require('zlib');
+var Promise = require('bluebird');
 
 /**
- * @returns {vow.Promise}
+ * @returns {Promise}
  */
-module.exports = function decompress (buffer, compressType) {
-    var d = vow.defer();
-
-    if (compressType === 'gzip') {
-        zlib.gunzip(buffer, function (err, decompressed) {
-            if (err) {
-                d.reject(err);
-            } else {
-                d.resolve(decompressed);
-            }
-        });
-    }
-    else if (compressType === 'deflate') {
-        zlib.inflate(buffer, function (err, decompressed) {
-            if (err) {
-                d.reject(err);
-            } else {
-                d.resolve(decompressed);
-            }
-        });
-    }
-    else {
-        d.resolve(buffer);
-    }
-
-    return d.promise();
+module.exports = function decompress(buffer, compressType) {
+    return new Promise(function (resolve, reject) {
+        if (compressType === 'gzip') {
+            zlib.gunzip(buffer, function (err, decompressed) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(decompressed);
+                }
+            });
+        } else if (compressType === 'deflate') {
+            zlib.inflate(buffer, function (err, decompressed) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(decompressed);
+                }
+            });
+        } else {
+            resolve(buffer);
+        }
+    });
 };

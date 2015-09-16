@@ -1,28 +1,28 @@
 {
   "author": "Alexey Belousov",
   "name": "grabby",
-  "description": "Simple node crawler",
-  "keywords": "crawler, http, grabber",
-  "version": "0.1.9",
+  "description": "Enhanced request library with some specific cases like win1251 encoding and encoding support.",
+  "keywords": "crawler, http, grabber, request, parse, encode, windows1251",
+  "version": "0.2.0",
+  "license": "MIT",
   "repository": {
     "url": "https://github.com/i4got10/grabby.git"
   },
   "dependencies": {
-    "request": "~2.36.0",
-    "lodash": "~2.4.1",
-    "vow": "~0.4.4",
-    "iconv-lite": "~0.2.11",
-    "debug": "~0.8.0",
-    "vow-node": "~0.2.1"
+    "request": "^2.62.0",
+    "lodash": "^3.10.1",
+    "iconv-lite": "~0.4.11",
+    "debug": "^2.2.0",
+    "bluebird": "~2.10.0"
   },
   "devDependencies": {
-    "nock": "~0.34.1",
-    "mocha": "~1.20.1",
-    "chai": "~1.9.1"
+    "nock": "~2.11.0",
+    "mocha": "~2.3.2",
+    "chai": "~3.2.0"
   },
   "main": "lib/crawler",
   "engines": {
-    "node": "~0.10"
+    "node": ">=0.10"
   },
   "scripts": {
     "test": "mocha tests/*.js -R spec -t 100000"

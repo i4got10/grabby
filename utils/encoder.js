@@ -1,5 +1,5 @@
-var util = require('util'),
-    iconv = require('iconv-lite');
+var util = require('util');
+var iconv = require('iconv-lite');
 
 /**
  * @param {String} encoding
@@ -8,9 +8,9 @@ var util = require('util'),
  */
 function _normalizeEncoding(encoding) {
     var e = encoding.toLowerCase();
-    if (['utf-8', 'utf8'].indexOf(encoding) !== -1) {
+    if (['utf-8', 'utf8'].indexOf(e) !== -1) {
         e = 'utf8';
-    } else if (['win1251', 'windows-1251', 'windows1251'].indexOf(encoding) !== -1) {
+    } else if (['win1251', 'windows-1251', 'windows1251'].indexOf(e) !== -1) {
         e = 'win1251';
     } else {
         throw new Error(util.format('Encoding "%s" is not supported yet', encoding));
@@ -30,8 +30,8 @@ function _normalizeEncoding(encoding) {
  * @return {String}
  */
 module.exports = function (buffer, encodeFrom, encodeTo) {
-    var from = _normalizeEncoding(encodeFrom),
-        to = _normalizeEncoding(encodeTo);
+    var from = _normalizeEncoding(encodeFrom);
+    var to = _normalizeEncoding(encodeTo);
 
     // from source encoding to internal
     var buf = iconv.fromEncoding(buffer, from);

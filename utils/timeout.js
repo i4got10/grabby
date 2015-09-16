@@ -1,4 +1,4 @@
-var vow = require('vow');
+var Promise = require('bluebird');
 
 /**
  * @param {Number} time
@@ -6,11 +6,7 @@ var vow = require('vow');
  * @returns {vow.Promise}
  */
 module.exports = function (time) {
-    var d = vow.defer();
-
-    setTimeout(function () {
-        d.resolve();
-    }, time);
-
-    return d.promise();
+    return new Promise(function (resolve) {
+        setTimeout(resolve, time);
+    });
 };

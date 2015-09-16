@@ -5,7 +5,7 @@
 
 ## Features
  * [request](https://github.com/mikeal/request) compatibility
- * [promise](https://github.com/dfilatov/vow) interface
+ * [promise](https://github.com/petkaantonov/bluebird) interface
  * encoding detection(utf8, win1251)
  * compressing detection(gzip, deflate)
  * [debug](https://github.com/visionmedia/debug) support
@@ -26,7 +26,7 @@ var grabby = require('grabby');
 // same as original node request
 var request = {url: 'http://yandex.ru'};
 
-// returns vow promise
+// returns Promise
 grabby.requestHtml(request).then(function (html) {
     // for example parse http with cheerio
     var $ = cheerio.load(html);

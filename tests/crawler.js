@@ -1,10 +1,9 @@
 /*global describe, before, after, it, afterEach, beforeEach */
 
-var grabby = require('../lib/crawler'),
-    fs = require('fs'),
-    nock = require('nock'),
-    vow = require('vow'),
-    expect = require('chai').expect;
+var grabby = require('../lib/crawler');
+var fs = require('fs');
+var nock = require('nock');
+var expect = require('chai').expect;
 
 nock.disableNetConnect();
 
@@ -17,9 +16,9 @@ var responses = {
     }
 };
 
-describe('grabby', function() {
+describe('grabby', function () {
     describe('#requestHtml', function () {
-        it('simple html pages', function() {
+        it('simple html pages', function () {
             var scope = nock('http://ya.ru')
                 .get('/')
                 .reply(200, responses['ya.ru-plain'], {});
@@ -34,7 +33,7 @@ describe('grabby', function() {
             });
         });
 
-        it('html pages encoded with gzip', function() {
+        it('html pages encoded with gzip', function () {
             var scope = nock('http://ya.ru')
                 .get('/')
                 .reply(200, responses['ya.ru-gzip'], {'Content-Encoding': 'gzip'});
