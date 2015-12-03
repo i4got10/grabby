@@ -3,7 +3,7 @@
   "name": "grabby",
   "description": "Enhanced request library with some specific cases like win1251 encoding and encoding support.",
   "keywords": "crawler, http, grabber, request, parse, encode, windows1251",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/i4got10/grabby.git"
