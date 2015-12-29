@@ -121,5 +121,18 @@ describe('grabby', function () {
                 }
             );
         });
+
+        it('allow to set maxListeners', function () {
+            var scope = nock('http://ya.ru')
+                .get('/')
+                .reply(200, responses['ya.ru-plain'], {});
+
+            var request = {url: 'http://ya.ru/', maxListeners: 5};
+
+            return grabby.requestHtml(request).then(function () {
+                // scope done
+                expect(scope.isDone()).to.equal(true);
+            });
+        });
     });
 });
